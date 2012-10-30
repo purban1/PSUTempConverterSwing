@@ -18,8 +18,9 @@ public class TempConverterGUI extends javax.swing.JFrame {
     public TempConverterGUI() {
         initComponents();
         
-        this.rdoCelcius.isEnabled();
+//        this.rdoCelcius.isEnabled();
         rdoCelcius.setActionCommand("celcius");
+        this.txtTempToConvert.setText("0");
         
     }
 
