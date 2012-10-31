@@ -18,8 +18,8 @@ public class TempConverterGUI extends javax.swing.JFrame {
     public TempConverterGUI() {
         initComponents();
         
-//        this.rdoCelcius.isEnabled();
         rdoCelcius.setActionCommand("celcius");
+        rdoCelcius.setSelected(true);
         this.txtTempToConvert.setText("0");
         
     }
@@ -35,7 +35,7 @@ public class TempConverterGUI extends javax.swing.JFrame {
 
         btnGroupTemperatures = new javax.swing.ButtonGroup();
         lblAppTitle = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDescription = new javax.swing.JLabel();
         rdoCelcius = new javax.swing.JRadioButton();
         rdoFahrenheit = new javax.swing.JRadioButton();
         lblConversionStatement = new javax.swing.JLabel();
@@ -51,10 +51,9 @@ public class TempConverterGUI extends javax.swing.JFrame {
         lblAppTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAppTitle.setText("Temperature Converter");
 
-        jLabel1.setText("Select a conversion method and enter a temperature.");
+        lblDescription.setText("Select a conversion method and enter a temperature.");
 
         btnGroupTemperatures.add(rdoCelcius);
-        rdoCelcius.setSelected(true);
         rdoCelcius.setText("Convert to Celcius");
         rdoCelcius.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +76,7 @@ public class TempConverterGUI extends javax.swing.JFrame {
         lblConversionStatement1.setText("Converted Temperature:");
 
         btnConvert.setText("Convert");
+        btnConvert.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnConvert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConvertActionPerformed(evt);
@@ -96,7 +96,7 @@ public class TempConverterGUI extends javax.swing.JFrame {
                         .add(lblConversionResult, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 170, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(rdoFahrenheit)
                     .add(rdoCelcius)
-                    .add(jLabel1)
+                    .add(lblDescription)
                     .add(lblAppTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 357, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(layout.createSequentialGroup()
                         .add(lblConversionStatement)
@@ -105,8 +105,8 @@ public class TempConverterGUI extends javax.swing.JFrame {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(btnConvert)
-                .add(140, 140, 140))
+                .add(btnConvert, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(111, 111, 111))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -114,7 +114,7 @@ public class TempConverterGUI extends javax.swing.JFrame {
                 .add(15, 15, 15)
                 .add(lblAppTitle)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel1)
+                .add(lblDescription)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(rdoCelcius)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -124,12 +124,12 @@ public class TempConverterGUI extends javax.swing.JFrame {
                     .add(lblConversionStatement)
                     .add(txtTempToConvert, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnConvert)
+                .add(btnConvert, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(lblConversionResult, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(lblConversionStatement1))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,7 +146,9 @@ public class TempConverterGUI extends javax.swing.JFrame {
     DecimalFormat fd = new DecimalFormat();
 
     private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
-        if (!(this.txtTempToConvert.getText() == null)) {
+//        if ((!(this.txtTempToConvert.getText() == null)) || (!(this.txtTempToConvert.getText().equals("")))) {
+        if ((Double.parseDouble(this.txtTempToConvert.getText()) >= 0.0) || 
+                ((Double.parseDouble(this.txtTempToConvert.getText()) <=0.0))) {
             double newTemp = 0.0;
             if (btnGroupTemperatures.getSelection().getActionCommand().equals("celcius")) {
                 newTemp = ((Double.parseDouble(txtTempToConvert.getText()) - 32) / 1.8);
@@ -197,11 +199,11 @@ public class TempConverterGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConvert;
     private javax.swing.ButtonGroup btnGroupTemperatures;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAppTitle;
     private javax.swing.JLabel lblConversionResult;
     private javax.swing.JLabel lblConversionStatement;
     private javax.swing.JLabel lblConversionStatement1;
+    private javax.swing.JLabel lblDescription;
     private javax.swing.JRadioButton rdoCelcius;
     private javax.swing.JRadioButton rdoFahrenheit;
     private javax.swing.JTextField txtTempToConvert;
