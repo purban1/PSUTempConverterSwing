@@ -146,56 +146,63 @@ public class TempConverterGUI extends javax.swing.JFrame {
     DecimalFormat fd = new DecimalFormat();
 
     private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
-//        if ((!(this.txtTempToConvert.getText() == null)) || (!(this.txtTempToConvert.getText().equals("")))) {
-        if ((Double.parseDouble(this.txtTempToConvert.getText()) >= 0.0) || 
-                ((Double.parseDouble(this.txtTempToConvert.getText()) <=0.0))) {
-            double newTemp = 0.0;
-            if (btnGroupTemperatures.getSelection().getActionCommand().equals("celcius")) {
-                newTemp = ((Double.parseDouble(txtTempToConvert.getText()) - 32) / 1.8);
-                this.lblConversionResult.setText(fd.format(newTemp) + "°C.");
-            } else {
-                newTemp = ((Double.parseDouble(txtTempToConvert.getText()) * 1.8) + 32);
-                this.lblConversionResult.setText(fd.format(newTemp) + "°F.");
-            }
-            
+//        if ((Double.parseDouble(this.txtTempToConvert.getText()) >= 0.0) || 
+//                ((Double.parseDouble(this.txtTempToConvert.getText().trim()) <=0.0))) {
+//            double newTemp = 0.0;
+//            if (btnGroupTemperatures.getSelection().getActionCommand().equals("celcius")) {
+//                newTemp = ((Double.parseDouble(txtTempToConvert.getText().trim()) - 32) / 1.8);
+//                this.lblConversionResult.setText(fd.format(newTemp) + "°C.");
+//            } else {
+//                newTemp = ((Double.parseDouble(txtTempToConvert.getText().trim()) * 1.8) + 32);
+//                this.lblConversionResult.setText(fd.format(newTemp) + "°F.");
+//            }
+//            
+//        }
+        double newTemp = 0.0;
+        if (this.rdoCelcius.isSelected()){       
+            newTemp = ((Double.parseDouble(txtTempToConvert.getText().trim()) - 32) / 1.8);
+            this.lblConversionResult.setText(fd.format(newTemp) + "°C.");
+        } else{
+            newTemp = ((Double.parseDouble(txtTempToConvert.getText().trim()) * 1.8) + 32);
+            this.lblConversionResult.setText(fd.format(newTemp) + "°F.");
         }
     }//GEN-LAST:event_btnConvertActionPerformed
 
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TempConverterGUI().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(TempConverterGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TempConverterGUI().setVisible(true);
+//            }
+//        });
+//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConvert;
     private javax.swing.ButtonGroup btnGroupTemperatures;
